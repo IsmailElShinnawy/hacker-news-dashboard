@@ -17,7 +17,7 @@ const FromDatePicker = ({ dateAsIsoString }: { dateAsIsoString: string }) => {
       } else {
         newSearchParams.delete('from');
       }
-      router.replace(`/keywords?${newSearchParams.toString()}`);
+      router.replace(`/stories?${newSearchParams.toString()}`);
     });
   };
 

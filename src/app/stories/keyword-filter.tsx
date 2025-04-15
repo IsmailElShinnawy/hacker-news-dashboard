@@ -21,7 +21,7 @@ const KeywordFilter = ({ selectedKeywords }: KeywordFilterProps) => {
       } else {
         newSearchParams.delete('keywords');
       }
-      router.replace(`/keywords?${newSearchParams.toString()}`);
+      router.replace(`/stories?${newSearchParams.toString()}`);
     });
   };
 

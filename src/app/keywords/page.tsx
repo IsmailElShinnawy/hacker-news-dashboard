@@ -2,7 +2,7 @@ import { QueryClient } from '@tanstack/react-query';
 import CustomBarChart from './custom-bar-chart';
 import KeywordFilter from './keyword-filter';
 import MinFrequencyInput from './min-frequency-input';
-import DatePicker from './from-date-picker';
+import FromDatePicker from './from-date-picker';
 export default async function Keywords({
   searchParams,
 }: {
@@ -32,7 +32,7 @@ export default async function Keywords({
         <div className="w-full flex space-x-6">
           <KeywordFilter selectedKeywords={keywords} />
           <MinFrequencyInput value={min} />
-          <DatePicker dateAsIsoString={from} />
+          <FromDatePicker dateAsIsoString={from} />
         </div>
         <CustomBarChart response={response} />
       </div>
