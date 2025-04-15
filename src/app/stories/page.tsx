@@ -23,6 +23,8 @@ export default async function Stories({
     },
   });
 
+  const isEmpty = Object.keys(response).length === 0;
+
   return (
     <div className="w-full h-full flex items-center justify-center">
       <div className="w-1/2 flex flex-col gap-4">
@@ -30,25 +32,31 @@ export default async function Stories({
           <KeywordFilter selectedKeywords={keywords} />
           <FromDatePicker dateAsIsoString={from} />
         </div>
-        <div className="w-full flex flex-col gap-4 max-h-3/4 overflow-y-auto">
-          {Object.entries(response).map(([keyword, stories]) => {
-            return (
-              <div key={keyword} className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">{keyword}</div>
-                {stories.map(s => (
-                  <Link
-                    key={s.id}
-                    href={s.url}
-                    className="text-sm text-muted-foreground hover:text-primary"
-                    target="_blank"
-                  >
-                    {s.title}
-                  </Link>
-                ))}
-              </div>
-            );
-          })}
-        </div>
+        {isEmpty ? (
+          <div className="w-full h-60 flex items-center justify-center">
+            <p>No data found. Try to change the filters :D</p>
+          </div>
+        ) : (
+          <div className="w-full flex flex-col gap-4 max-h-3/4 overflow-y-auto">
+            {Object.entries(response).map(([keyword, stories]) => {
+              return (
+                <div key={keyword} className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">{keyword}</div>
+                  {stories.map(s => (
+                    <Link
+                      key={s.id}
+                      href={s.url}
+                      className="text-sm text-muted-foreground hover:text-primary"
+                      target="_blank"
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </div>
   );

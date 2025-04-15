@@ -35,7 +35,13 @@ export default async function Keywords({
           <MinFrequencyInput value={min} />
           <FromDatePicker dateAsIsoString={from} />
         </div>
-        <CustomBarChart response={response} />
+        {response.length > 0 ? (
+          <CustomBarChart response={response} />
+        ) : (
+          <div className="w-full h-60 flex items-center justify-center">
+            <p>No data found. Try to change the filters :D</p>
+          </div>
+        )}
       </div>
     </div>
   );
