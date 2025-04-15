@@ -2,6 +2,7 @@ import { QueryClient } from '@tanstack/react-query';
 import KeywordFilter from './keyword-filter';
 import Link from 'next/link';
 import FromDatePicker from './from-date-picker';
+import getBaseUrl from '@/lib/get-base-url';
 export default async function Stories({
   searchParams,
 }: {
@@ -16,7 +17,7 @@ export default async function Stories({
     queryKey: ['stories', keywords],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:3000/api/stories?keywords=${keywords.join(',')}&fromDate=${from}`,
+        `${getBaseUrl()}/api/stories?keywords=${keywords.join(',')}&fromDate=${from}`,
       );
       return response.json();
     },

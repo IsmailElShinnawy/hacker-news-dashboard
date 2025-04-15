@@ -3,6 +3,7 @@ import CustomBarChart from './custom-bar-chart';
 import KeywordFilter from './keyword-filter';
 import MinFrequencyInput from './min-frequency-input';
 import FromDatePicker from './from-date-picker';
+import getBaseUrl from '@/lib/get-base-url';
 export default async function Keywords({
   searchParams,
 }: {
@@ -20,7 +21,7 @@ export default async function Keywords({
     queryKey: ['frequency', keywords, min, from],
     queryFn: async () => {
       const response = await fetch(
-        `http://localhost:3000/api/frequency?keywords=${keywords.join(',')}&minCount=${min}&fromDate=${from}`,
+        `${getBaseUrl()}/api/frequency?keywords=${keywords.join(',')}&minCount=${min}&fromDate=${from}`,
       );
       return response.json();
     },
